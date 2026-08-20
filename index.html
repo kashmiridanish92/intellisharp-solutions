@@ -232,15 +232,11 @@
     padding:40px;
   }
   .booking-shell .note{ margin-top:24px; }
-  #booking-embed-placeholder{
-    border:1px dashed var(--line);
-    background:var(--accent-ink);
-    padding:48px 24px;
-    text-align:center;
-    color:var(--muted);
-    font-size:14px;
+  .booking-embed-wrap{
+    border:1px solid var(--line);
+    overflow:hidden;
   }
-  #booking-embed-placeholder strong{ color:var(--ink); display:block; margin-bottom:6px; font-family:'Space Grotesk', sans-serif; font-size:16px; }
+  .booking-embed-wrap iframe{ display:block; border:none; }
 
   /* Feedback */
   .feedback-shell{
@@ -311,7 +307,7 @@
     <h1>Automation that adds the human touch<span class="slash"> / </span>not replaces it.</h1>
     <p class="lede">IntelliSharp Solutions brings 12+ years of enterprise RPA and AI engineering to small and mid-sized businesses — automating data entry, document processing, and policy lookups so your team spends less time digging through paperwork and more time with clients.</p>
     <div class="hero-cta">
-      <a href="#contact" class="btn btn-primary">Book a free 30-min session</a>
+      <a href="https://cal.com/danish-waseem-ggrq8c/free-30-minute-consultation" target="_blank" rel="noopener" class="btn btn-primary">Book a free 30-min session</a>
       <a href="#services" class="btn btn-ghost">See services</a>
     </div>
   </div>
@@ -440,24 +436,11 @@
       </div>
     </div>
     <div class="booking-shell">
-      <!--
-        TODO (Danish): This is a placeholder. Create a free scheduling account
-        (Calendly or Acuity/as.me — same tool as the example you shared),
-        set up a "Free 30-Minute Session" event type, then either:
-          1) Swap the data-url below for your real Calendly link and delete
-             the placeholder <div id="booking-embed-placeholder"> block, or
-          2) If you use Acuity instead, replace this whole block with
-             Acuity's embed <iframe src="https://app.acuityscheduling.com/schedule.php?owner=...">.
-      -->
-      <div id="booking-embed-placeholder">
-        <strong>Scheduling widget goes here</strong>
-        Once you create a free Calendly (or Acuity) account and set up your "Free 30-Minute Session" event, send me the link and I'll wire it in here — visitors will be able to pick a time and book instantly, no back-and-forth email.
+      <a href="https://cal.com/danish-waseem-ggrq8c/free-30-minute-consultation" target="_blank" rel="noopener" class="btn btn-primary" style="margin-bottom:24px;">Book Your Free 30-Minute Session →</a>
+      <div class="booking-embed-wrap">
+        <div id="my-cal-inline" style="width:100%;height:700px;overflow:scroll;"></div>
       </div>
-      <!-- Calendly embed (uncomment and set your real link once ready)
-      <div class="calendly-inline-widget" data-url="https://calendly.com/intellisharpsolutions/free-30-min-session" style="min-width:320px;height:700px;"></div>
-      <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
-      -->
-      <div class="note">
+      <div class="note" style="margin-top:24px;">
         <strong>Prefer to just talk first?</strong> Email or call using the details below and we'll find a time together.
       </div>
     </div>
@@ -550,6 +533,18 @@
 </script>
 
 <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+
+<!-- Cal.com booking widget: official embed snippet for danish-waseem-ggrq8c/free-30-minute-consultation -->
+<script type="text/javascript">
+  (function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; if (typeof namespace === "string") { cal.ns[namespace] = cal.ns[namespace] || api; p(cal.ns[namespace], ar); p(cal, ["initNamespace", namespace]); } else p(cal, ar); return; } p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
+  Cal("init", "free-30-minute-consultation", {origin: "https://cal.com"});
+  Cal.ns["free-30-minute-consultation"]("inline", {
+    elementOrSelector: "#my-cal-inline",
+    config: {"layout": "month_view"},
+    calLink: "danish-waseem-ggrq8c/free-30-minute-consultation",
+  });
+  Cal.ns["free-30-minute-consultation"]("ui", {"styles": {"branding": {"brandColor": "#2647E0"}}, "hideEventTypeDetails": false, "layout": "month_view"});
+</script>
 
 </body>
 </html>
