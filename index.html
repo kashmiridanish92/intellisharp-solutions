@@ -560,8 +560,10 @@
   is published to the site automatically.
 -->
 <script>
-(function(){
-  if (typeof netlifyIdentity === 'undefined') return;
+(function poll(){
+  // The identity widget script loads with `defer`, so it may not be defined yet
+  // by the time this inline script runs. Wait for it instead of bailing out.
+  if (typeof netlifyIdentity === 'undefined') { setTimeout(poll, 100); return; }
 
   var loggedOutEl = document.getElementById('feedback-logged-out');
   var loggedInEl = document.getElementById('feedback-logged-in');
