@@ -8,6 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script defer src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
 <style>
   :root{
     --bg: #F5F6F4;
@@ -481,22 +482,32 @@
     <div class="section-head">
       <div>
         <div class="section-tag mono">TELL US WHAT YOU THINK</div>
-        <h2>Feedback — from anyone, anytime</h2>
+        <h2>Feedback — sign in, then share it</h2>
       </div>
     </div>
     <div class="feedback-shell">
-      <p style="color:var(--muted); font-size:14px; margin-bottom:24px;">Client, visitor, or just browsing — if you've got thoughts on our services, this site, or an idea for us, we'd genuinely like to hear it.</p>
-      <form id="feedback-form" name="feedback" method="POST" data-netlify="true" netlify-honeypot="bot-field" class="feedback-form">
-        <input type="hidden" name="form-name" value="feedback" />
-        <p class="hidden-field"><label>Don't fill this out if you're human: <input name="bot-field" /></label></p>
-        <div class="form-row">
-          <label>Name<input type="text" name="name" required></label>
-          <label>Email<input type="email" name="email" required></label>
-        </div>
-        <label>Your feedback<textarea name="message" rows="4" required></textarea></label>
-        <button type="submit" class="btn btn-primary">Send feedback</button>
-        <p id="feedback-status" class="feedback-status" style="display:none;"></p>
-      </form>
+      <p style="color:var(--muted); font-size:14px; margin-bottom:24px;">Client, visitor, or just browsing — if you've got thoughts on our services, this site, or an idea for us, we'd genuinely like to hear it. Sign in first so we know who it's from — every submission is reviewed before we act on it.</p>
+
+      <div id="feedback-logged-out">
+        <button id="feedback-login-btn" type="button" class="btn btn-primary">Log In</button>
+        <button id="feedback-signup-btn" type="button" class="btn btn-ghost">Sign Up</button>
+      </div>
+
+      <div id="feedback-logged-in" style="display:none;">
+        <div id="feedback-user-badge" style="font-size:13px; color:var(--muted); margin-bottom:16px;"></div>
+        <form id="feedback-form" name="feedback" method="POST" data-netlify="true" netlify-honeypot="bot-field" class="feedback-form">
+          <input type="hidden" name="form-name" value="feedback" />
+          <p class="hidden-field"><label>Don't fill this out if you're human: <input name="bot-field" /></label></p>
+          <div class="form-row">
+            <label>Name<input type="text" name="name" id="feedback-name" required readonly></label>
+            <label>Email<input type="email" name="email" id="feedback-email" required readonly></label>
+          </div>
+          <label>Your feedback<textarea name="message" rows="4" required></textarea></label>
+          <button type="submit" class="btn btn-primary">Send feedback</button>
+          <a href="#" id="feedback-logout-btn" style="margin-left:16px; font-size:13px; color:var(--muted);">Log out</a>
+          <p id="feedback-status" class="feedback-status" style="display:none;"></p>
+        </form>
+      </div>
     </div>
   </div>
 </section>
@@ -522,13 +533,63 @@
       form.reset();
       status.style.display = 'block';
       status.style.color = 'var(--accent)';
-      status.textContent = "Thanks — we'll take a look!";
+      status.textContent = "Thanks — we'll take a look and get back to you if needed.";
     }).catch(function(){
       status.style.display = 'block';
       status.style.color = 'crimson';
       status.textContent = "Something went wrong — please email us directly instead.";
     });
   });
+})();
+</script>
+
+<!--
+  Feedback login gate, powered by Netlify Identity.
+  REQUIRED SETUP (one-time, in the Netlify dashboard for this site):
+    Site configuration -> Identity -> Enable Identity
+  Once enabled, visitors can click "Sign Up" to create an account (email + password,
+  with email confirmation) or "Log In" if they already have one. Only after logging in
+  does the feedback form appear, pre-filled with their verified name/email (read-only,
+  so they can't spoof someone else's identity). Submissions still land in your
+  Netlify Forms dashboard for you to review before you act on any of them — nothing
+  is published to the site automatically.
+-->
+<script>
+(function(){
+  if (typeof netlifyIdentity === 'undefined') return;
+
+  var loggedOutEl = document.getElementById('feedback-logged-out');
+  var loggedInEl = document.getElementById('feedback-logged-in');
+  var userBadge = document.getElementById('feedback-user-badge');
+  var nameField = document.getElementById('feedback-name');
+  var emailField = document.getElementById('feedback-email');
+  var loginBtn = document.getElementById('feedback-login-btn');
+  var signupBtn = document.getElementById('feedback-signup-btn');
+  var logoutBtn = document.getElementById('feedback-logout-btn');
+
+  function showLoggedIn(user){
+    var meta = (user && user.user_metadata) || {};
+    var displayName = meta.full_name || (user && user.email) || '';
+    if (nameField) nameField.value = displayName;
+    if (emailField) emailField.value = (user && user.email) || '';
+    if (userBadge) userBadge.textContent = 'Signed in as ' + (user && user.email ? user.email : displayName);
+    if (loggedOutEl) loggedOutEl.style.display = 'none';
+    if (loggedInEl) loggedInEl.style.display = 'block';
+  }
+  function showLoggedOut(){
+    if (loggedOutEl) loggedOutEl.style.display = 'block';
+    if (loggedInEl) loggedInEl.style.display = 'none';
+  }
+
+  netlifyIdentity.on('init', function(user){ user ? showLoggedIn(user) : showLoggedOut(); });
+  netlifyIdentity.on('login', function(user){ showLoggedIn(user); netlifyIdentity.close(); });
+  netlifyIdentity.on('logout', function(){ showLoggedOut(); });
+
+  if (loginBtn) loginBtn.addEventListener('click', function(){ netlifyIdentity.open('login'); });
+  if (signupBtn) signupBtn.addEventListener('click', function(){ netlifyIdentity.open('signup'); });
+  if (logoutBtn) logoutBtn.addEventListener('click', function(e){ e.preventDefault(); netlifyIdentity.logout(); });
+
+  netlifyIdentity.init();
 })();
 </script>
 
