@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IntelliSharp Solutions LLC — IT Solutions</title>
+<meta name="description" content="IntelliSharp Solutions LLC provides managed IT support, cloud infrastructure, cybersecurity, and IT consulting for growing businesses.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #F5F6F4;
+    --surface: #FFFFFF;
+    --ink: #10151C;
+    --muted: #5B6572;
+    --line: #DADFE2;
+    --accent: #2647E0;
+    --accent-ink: #EDEFFF;
+  }
+  *{ box-sizing:border-box; margin:0; padding:0; }
+  html{ scroll-behavior:smooth; }
+  body{
+    background:var(--bg);
+    color:var(--ink);
+    font-family:'IBM Plex Sans', sans-serif;
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{ color:inherit; }
+  .wrap{ max-width:1120px; margin:0 auto; padding:0 32px; }
+  .mono{ font-family:'IBM Plex Mono', monospace; letter-spacing:0.02em; }
+
+  /* Nav */
+  header{
+    position:sticky; top:0; z-index:40;
+    background:rgba(245,246,244,0.9);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line);
+  }
+  nav.wrap{
+    display:flex; align-items:center; justify-content:space-between;
+    padding-top:20px; padding-bottom:20px;
+  }
+  .wordmark{
+    font-family:'Space Grotesk', sans-serif;
+    font-weight:700; font-size:19px;
+    display:flex; align-items:center; gap:8px;
+    text-decoration:none;
+  }
+  .wordmark .cut{
+    width:10px; height:18px;
+    background:var(--accent);
+    clip-path:polygon(0 0, 100% 0, 60% 100%, 0% 100%);
+    display:inline-block;
+  }
+  .navlinks{ display:flex; gap:32px; font-size:14px; }
+  .navlinks a{ text-decoration:none; color:var(--muted); transition:color .15s; }
+  .navlinks a:hover{ color:var(--ink); }
+
+  /* Hero */
+  .hero{
+    position:relative;
+    padding:96px 0 120px;
+    overflow:hidden;
+  }
+  .hero::after{
+    content:"";
+    position:absolute; right:-10%; top:-20%;
+    width:600px; height:600px;
+    background:
+      linear-gradient(135deg, transparent 48%, var(--line) 48%, var(--line) 49%, transparent 49%),
+      linear-gradient(135deg, transparent 60%, var(--line) 60%, var(--line) 61%, transparent 61%);
+    opacity:0.6;
+    pointer-events:none;
+  }
+  .eyebrow{
+    font-size:13px; color:var(--accent);
+    display:flex; align-items:center; gap:10px;
+    margin-bottom:22px;
+  }
+  .eyebrow .bar{ width:28px; height:2px; background:var(--accent); }
+  h1{
+    font-family:'Space Grotesk', sans-serif;
+    font-weight:600;
+    font-size:clamp(34px, 5.2vw, 58px);
+    line-height:1.05;
+    max-width:820px;
+    letter-spacing:-0.01em;
+  }
+  h1 .slash{ color:var(--accent); }
+  .lede{
+    margin-top:26px;
+    font-size:18px;
+    color:var(--muted);
+    max-width:560px;
+  }
+  .hero-cta{ margin-top:38px; display:flex; gap:16px; flex-wrap:wrap; }
+  .btn{
+    display:inline-block;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:13px;
+    letter-spacing:0.03em;
+    padding:14px 24px;
+    text-decoration:none;
+    clip-path:polygon(0 0, 100% 0, 100% 70%, 92% 100%, 0 100%);
+  }
+  .btn-primary{ background:var(--ink); color:#fff; }
+  .btn-primary:hover{ background:var(--accent); }
+  .btn-ghost{ border:1px solid var(--line); color:var(--ink); }
+  .btn-ghost:hover{ border-color:var(--ink); }
+
+  /* Section shared */
+  section{ padding:80px 0; border-top:1px solid var(--line); }
+  .section-head{
+    display:flex; justify-content:space-between; align-items:flex-end;
+    gap:24px; margin-bottom:48px; flex-wrap:wrap;
+  }
+  .section-tag{
+    font-size:13px; color:var(--muted);
+  }
+  h2{
+    font-family:'Space Grotesk', sans-serif;
+    font-size:clamp(24px,3vw,32px);
+    font-weight:600;
+  }
+
+  /* Services */
+  .services{
+    display:grid;
+    grid-template-columns:repeat(2, 1fr);
+    gap:1px;
+    background:var(--line);
+    border:1px solid var(--line);
+  }
+  .service{
+    background:var(--surface);
+    padding:32px;
+    position:relative;
+  }
+  .service .tag{
+    font-size:12px; color:var(--accent);
+    display:inline-block; margin-bottom:16px;
+  }
+  .service h3{
+    font-family:'Space Grotesk', sans-serif;
+    font-size:19px; font-weight:600;
+    margin-bottom:10px;
+  }
+  .service p{ color:var(--muted); font-size:14.5px; }
+
+  /* About */
+  .about{ display:grid; grid-template-columns:1fr 1fr; gap:64px; align-items:start; }
+  .about p{ color:var(--muted); margin-bottom:16px; }
+  .stat-list{ display:flex; flex-direction:column; gap:22px; }
+  .stat{ border-left:2px solid var(--accent); padding-left:16px; }
+  .stat .n{ font-family:'Space Grotesk', sans-serif; font-size:26px; font-weight:600; }
+  .stat .l{ font-size:13px; color:var(--muted); }
+
+  /* Contact */
+  .contact-grid{
+    display:grid; grid-template-columns:1.1fr 0.9fr; gap:48px;
+  }
+  .contact-card{
+    background:var(--ink); color:#fff;
+    padding:40px;
+    clip-path:polygon(0 0, 100% 0, 100% 92%, 94% 100%, 0 100%);
+  }
+  .contact-card h3{ font-family:'Space Grotesk', sans-serif; font-size:22px; margin-bottom:18px; }
+  .contact-row{ display:flex; flex-direction:column; gap:14px; font-size:14.5px; }
+  .contact-row .l{ color:#8B96A8; font-size:12px; text-transform:uppercase; letter-spacing:0.06em; margin-bottom:2px; }
+  .note{
+    border:1px dashed var(--line);
+    padding:24px;
+    font-size:13.5px;
+    color:var(--muted);
+  }
+
+  footer{
+    border-top:1px solid var(--line);
+    padding:32px 0;
+    display:flex; justify-content:space-between; align-items:center;
+    font-size:13px; color:var(--muted); flex-wrap:wrap; gap:12px;
+  }
+  footer a{ text-decoration:none; }
+  footer a:hover{ color:var(--ink); }
+
+  @media (max-width: 760px){
+    .services{ grid-template-columns:1fr; }
+    .about, .contact-grid{ grid-template-columns:1fr; }
+    .navlinks{ display:none; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <nav class="wrap">
+    <a href="index.html" class="wordmark"><span class="cut"></span>IntelliSharp Solutions</a>
+    <div class="navlinks">
+      <a href="#services">Services</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+      <a href="privacy.html">Privacy Policy</a>
+    </div>
+  </nav>
+</header>
+
+<section class="hero" style="border-top:none;">
+  <div class="wrap">
+    <div class="eyebrow"><span class="bar"></span><span class="mono">IT SOLUTIONS &amp; MANAGED SERVICES</span></div>
+    <h1>Precision IT<span class="slash"> / </span>built for how your business actually runs.</h1>
+    <p class="lede">IntelliSharp Solutions LLC designs, secures, and supports the technology behind growing businesses — from day-to-day help desk support to full infrastructure strategy.</p>
+    <div class="hero-cta">
+      <a href="#contact" class="btn btn-primary">Talk to us</a>
+      <a href="#services" class="btn btn-ghost">See services</a>
+    </div>
+  </div>
+</section>
+
+<section id="services">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <div class="section-tag mono">WHAT WE DO</div>
+        <h2>IT support built around your business, not a ticket queue</h2>
+      </div>
+    </div>
+    <div class="services">
+      <div class="service">
+        <span class="tag mono">[MANAGED IT]</span>
+        <h3>Managed IT Support</h3>
+        <p>Day-to-day monitoring, maintenance, and help desk support so your systems stay reliable and your team stays productive.</p>
+      </div>
+      <div class="service">
+        <span class="tag mono">[CLOUD]</span>
+        <h3>Cloud Infrastructure &amp; Migration</h3>
+        <p>Planning and execution for moving workloads to the cloud, plus ongoing management of the environments you run on.</p>
+      </div>
+      <div class="service">
+        <span class="tag mono">[SECURITY]</span>
+        <h3>Cybersecurity &amp; Compliance</h3>
+        <p>Practical security controls, monitoring, and compliance support sized for small and mid-sized businesses.</p>
+      </div>
+      <div class="service">
+        <span class="tag mono">[NETWORK]</span>
+        <h3>Network Design &amp; Support</h3>
+        <p>Wired and wireless network design, setup, and troubleshooting for offices of any size.</p>
+      </div>
+      <div class="service">
+        <span class="tag mono">[STRATEGY]</span>
+        <h3>IT Consulting &amp; Strategy</h3>
+        <p>Technology roadmaps and vendor guidance to help you make confident, cost-effective IT decisions.</p>
+      </div>
+      <div class="service">
+        <span class="tag mono">[SUPPORT]</span>
+        <h3>Help Desk &amp; End-User Support</h3>
+        <p>Fast, responsive support for the everyday issues that slow your team down.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="wrap about">
+    <div>
+      <div class="section-tag mono">ABOUT</div>
+      <h2 style="margin-top:10px; margin-bottom:20px;">A focused IT partner, not a call center</h2>
+      <p>IntelliSharp Solutions LLC works with businesses that need dependable, hands-on IT support without the overhead of an in-house department. We handle the infrastructure, security, and day-to-day technology decisions so you can focus on running your business.</p>
+      <p>Every engagement starts with understanding how your business actually operates — then we build the IT environment around that, not the other way around.</p>
+    </div>
+    <div class="stat-list">
+      <div class="stat">
+        <div class="n">Direct</div>
+        <div class="l">You work with the people doing the work, not a rotating queue</div>
+      </div>
+      <div class="stat">
+        <div class="n">Proactive</div>
+        <div class="l">Issues get caught during monitoring, before they become downtime</div>
+      </div>
+      <div class="stat">
+        <div class="n">Scoped</div>
+        <div class="l">Support sized to your business, not a one-size-fits-all package</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="wrap contact-grid">
+    <div class="contact-card">
+      <h3>Let's talk about your IT</h3>
+      <div class="contact-row">
+        <div>
+          <div class="l">Email</div>
+          <div>admin@intellisharpsolutions.com</div>
+        </div>
+        <div>
+          <div class="l">Phone</div>
+          <div>+1 973 851 9246</div>
+        </div>
+        <div>
+          <div class="l">Location</div>
+          <div>Grass Valley, California</div>
+        </div>
+      </div>
+    </div>
+    <div class="note">
+      <strong style="color:var(--ink);">Note:</strong> the email, phone, and location fields on this page are placeholders — replace them with IntelliSharp Solutions LLC's real contact details before publishing, since this is also the site Twilio will review for toll-free and business verification.
+    </div>
+  </div>
+</section>
+
+<footer class="wrap">
+  <div>© <span id="year"></span> IntelliSharp Solutions LLC. All rights reserved.</div>
+  <div><a href="privacy.html">Privacy Policy</a></div>
+</footer>
+
+<script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+
+</body>
+</html>
