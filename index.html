@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>IntelliSharp Solutions LLC — IT Solutions</title>
-<meta name="description" content="IntelliSharp Solutions LLC provides managed IT support, cloud infrastructure, cybersecurity, and IT consulting for growing businesses.">
+<title>IntelliSharp Solutions — Automation & Document Intelligence for Growing Businesses</title>
+<meta name="description" content="IntelliSharp Solutions helps small and mid-sized businesses in healthcare, legal, and financial services automate data entry, document processing, and policy lookups — backed by 12+ years of enterprise RPA and AI engineering.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -93,7 +93,7 @@
     margin-top:26px;
     font-size:18px;
     color:var(--muted);
-    max-width:560px;
+    max-width:600px;
   }
   .hero-cta{ margin-top:38px; display:flex; gap:16px; flex-wrap:wrap; }
   .btn{
@@ -125,6 +125,18 @@
     font-weight:600;
   }
 
+  /* Industries */
+  .industries{ display:flex; flex-wrap:wrap; gap:12px; }
+  .industry-pill{
+    display:flex; align-items:center; gap:8px;
+    background:var(--surface);
+    border:1px solid var(--line);
+    padding:12px 20px;
+    font-family:'Space Grotesk', sans-serif;
+    font-size:15px; font-weight:600;
+  }
+  .industry-pill .dot{ width:7px; height:7px; background:var(--accent); border-radius:50%; }
+
   /* Services */
   .services{
     display:grid;
@@ -149,9 +161,44 @@
   }
   .service p{ color:var(--muted); font-size:14.5px; }
 
+  /* Demos */
+  .demos{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:1px;
+    background:var(--line);
+    border:1px solid var(--line);
+  }
+  .demo{ background:var(--ink); color:#fff; padding:28px; }
+  .demo .soon{
+    display:inline-block;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11px; letter-spacing:0.05em;
+    color:var(--accent-ink);
+    background:rgba(38,71,224,0.35);
+    border:1px solid rgba(38,71,224,0.6);
+    padding:4px 9px;
+    margin-bottom:14px;
+  }
+  .demo h3{
+    font-family:'Space Grotesk', sans-serif;
+    font-size:17px; font-weight:600; margin-bottom:8px;
+  }
+  .demo p{ color:#AEB6C2; font-size:13.5px; }
+
   /* About */
   .about{ display:grid; grid-template-columns:1fr 1fr; gap:64px; align-items:start; }
   .about p{ color:var(--muted); margin-bottom:16px; }
+  .about .credentials{
+    margin-top:20px; display:flex; flex-wrap:wrap; gap:10px;
+  }
+  .credential{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12px; color:var(--ink);
+    background:var(--accent-ink);
+    border:1px solid var(--line);
+    padding:6px 12px;
+  }
   .stat-list{ display:flex; flex-direction:column; gap:22px; }
   .stat{ border-left:2px solid var(--accent); padding-left:16px; }
   .stat .n{ font-family:'Space Grotesk', sans-serif; font-size:26px; font-weight:600; }
@@ -168,6 +215,7 @@
   }
   .contact-card h3{ font-family:'Space Grotesk', sans-serif; font-size:22px; margin-bottom:18px; }
   .contact-row{ display:flex; flex-direction:column; gap:14px; font-size:14.5px; }
+  .contact-row a{ text-decoration:none; }
   .contact-row .l{ color:#8B96A8; font-size:12px; text-transform:uppercase; letter-spacing:0.06em; margin-bottom:2px; }
   .note{
     border:1px dashed var(--line);
@@ -175,6 +223,53 @@
     font-size:13.5px;
     color:var(--muted);
   }
+  .note strong{ color:var(--ink); }
+
+  /* Booking */
+  .booking-shell{
+    background:var(--surface);
+    border:1px solid var(--line);
+    padding:40px;
+  }
+  .booking-shell .note{ margin-top:24px; }
+  #booking-embed-placeholder{
+    border:1px dashed var(--line);
+    background:var(--accent-ink);
+    padding:48px 24px;
+    text-align:center;
+    color:var(--muted);
+    font-size:14px;
+  }
+  #booking-embed-placeholder strong{ color:var(--ink); display:block; margin-bottom:6px; font-family:'Space Grotesk', sans-serif; font-size:16px; }
+
+  /* Feedback */
+  .feedback-shell{
+    max-width:640px;
+    background:var(--surface);
+    border:1px solid var(--line);
+    padding:40px;
+  }
+  .feedback-form label{
+    display:flex; flex-direction:column; gap:6px;
+    font-size:13px; color:var(--muted);
+    margin-bottom:18px;
+  }
+  .form-row{ display:grid; grid-template-columns:1fr 1fr; gap:18px; }
+  .feedback-form input[type=text],
+  .feedback-form input[type=email],
+  .feedback-form textarea{
+    font-family:'IBM Plex Sans', sans-serif;
+    font-size:14.5px; color:var(--ink);
+    background:var(--bg);
+    border:1px solid var(--line);
+    padding:12px 14px;
+    resize:vertical;
+  }
+  .feedback-form input:focus, .feedback-form textarea:focus{ outline:2px solid var(--accent); outline-offset:1px; }
+  .feedback-form button{ border:none; cursor:pointer; }
+  .hidden-field{ position:absolute; left:-9999px; }
+  .feedback-status{ margin-top:16px; font-size:14px; }
+  @media (max-width:600px){ .form-row{ grid-template-columns:1fr; } }
 
   footer{
     border-top:1px solid var(--line);
@@ -187,6 +282,7 @@
 
   @media (max-width: 760px){
     .services{ grid-template-columns:1fr; }
+    .demos{ grid-template-columns:1fr; }
     .about, .contact-grid{ grid-template-columns:1fr; }
     .navlinks{ display:none; }
   }
@@ -199,8 +295,11 @@
     <a href="index.html" class="wordmark"><span class="cut"></span>IntelliSharp Solutions</a>
     <div class="navlinks">
       <a href="#services">Services</a>
+      <a href="#demos">Demos</a>
       <a href="#about">About</a>
+      <a href="#booking">Book a Session</a>
       <a href="#contact">Contact</a>
+      <a href="#feedback">Feedback</a>
       <a href="privacy.html">Privacy Policy</a>
     </div>
   </nav>
@@ -208,12 +307,25 @@
 
 <section class="hero" style="border-top:none;">
   <div class="wrap">
-    <div class="eyebrow"><span class="bar"></span><span class="mono">IT SOLUTIONS &amp; MANAGED SERVICES</span></div>
-    <h1>Precision IT<span class="slash"> / </span>built for how your business actually runs.</h1>
-    <p class="lede">IntelliSharp Solutions LLC designs, secures, and supports the technology behind growing businesses — from day-to-day help desk support to full infrastructure strategy.</p>
+    <div class="eyebrow"><span class="bar"></span><span class="mono">AUTOMATION &amp; DOCUMENT INTELLIGENCE</span></div>
+    <h1>Automation that adds the human touch<span class="slash"> / </span>not replaces it.</h1>
+    <p class="lede">IntelliSharp Solutions brings 12+ years of enterprise RPA and AI engineering to small and mid-sized businesses — automating data entry, document processing, and policy lookups so your team spends less time digging through paperwork and more time with clients.</p>
     <div class="hero-cta">
-      <a href="#contact" class="btn btn-primary">Talk to us</a>
+      <a href="#contact" class="btn btn-primary">Book a free 30-min session</a>
       <a href="#services" class="btn btn-ghost">See services</a>
+    </div>
+  </div>
+</section>
+
+<section id="industries" style="padding-top:56px; padding-bottom:56px;">
+  <div class="wrap">
+    <div class="section-tag mono" style="margin-bottom:18px;">BUILT FOR REGULATED, DOCUMENT-HEAVY WORK</div>
+    <div class="industries">
+      <div class="industry-pill"><span class="dot"></span>Healthcare</div>
+      <div class="industry-pill"><span class="dot"></span>Legal</div>
+      <div class="industry-pill"><span class="dot"></span>Financial Services</div>
+      <div class="industry-pill"><span class="dot"></span>Government &amp; Public Sector</div>
+      <div class="industry-pill"><span class="dot"></span>Any growing small or mid-sized business</div>
     </div>
   </div>
 </section>
@@ -223,39 +335,67 @@
     <div class="section-head">
       <div>
         <div class="section-tag mono">WHAT WE DO</div>
-        <h2>IT support built around your business, not a ticket queue</h2>
+        <h2>From data entry to decisions, without adding headcount</h2>
       </div>
     </div>
     <div class="services">
       <div class="service">
-        <span class="tag mono">[MANAGED IT]</span>
-        <h3>Managed IT Support</h3>
-        <p>Day-to-day monitoring, maintenance, and help desk support so your systems stay reliable and your team stays productive.</p>
+        <span class="tag mono">[DATA ENTRY]</span>
+        <h3>Data Entry &amp; Record Management</h3>
+        <p>Accurate, automated entry and organization of records across your systems — so nothing gets lost in spreadsheets or filing cabinets.</p>
       </div>
       <div class="service">
-        <span class="tag mono">[CLOUD]</span>
-        <h3>Cloud Infrastructure &amp; Migration</h3>
-        <p>Planning and execution for moving workloads to the cloud, plus ongoing management of the environments you run on.</p>
+        <span class="tag mono">[DOCUMENTS]</span>
+        <h3>Document Intelligence &amp; OCR</h3>
+        <p>UiPath Document Understanding and AI-powered extraction turn contracts, claims, and forms into structured, usable data — no manual re-typing.</p>
       </div>
       <div class="service">
-        <span class="tag mono">[SECURITY]</span>
-        <h3>Cybersecurity &amp; Compliance</h3>
-        <p>Practical security controls, monitoring, and compliance support sized for small and mid-sized businesses.</p>
+        <span class="tag mono">[CHATBOTS]</span>
+        <h3>Policy &amp; Knowledge Chatbots</h3>
+        <p>A chatbot that actually knows your policies, so your team and customers get answers in seconds instead of digging through PDFs.</p>
       </div>
       <div class="service">
-        <span class="tag mono">[NETWORK]</span>
-        <h3>Network Design &amp; Support</h3>
-        <p>Wired and wireless network design, setup, and troubleshooting for offices of any size.</p>
+        <span class="tag mono">[RPA]</span>
+        <h3>Robotic Process Automation</h3>
+        <p>12+ years building UiPath bots that handle the repetitive back-office work reliably, day after day.</p>
+      </div>
+      <div class="service">
+        <span class="tag mono">[DATA]</span>
+        <h3>Data Transformation &amp; Analytics</h3>
+        <p>From messy, multi-source data to clean dashboards — transformation and Power BI reporting that shows what's actually happening in your business.</p>
       </div>
       <div class="service">
         <span class="tag mono">[STRATEGY]</span>
-        <h3>IT Consulting &amp; Strategy</h3>
-        <p>Technology roadmaps and vendor guidance to help you make confident, cost-effective IT decisions.</p>
+        <h3>Automation Strategy &amp; Consulting</h3>
+        <p>A free 30-minute session to map out where automation saves your business the most time — sized right for where you are today.</p>
       </div>
-      <div class="service">
-        <span class="tag mono">[SUPPORT]</span>
-        <h3>Help Desk &amp; End-User Support</h3>
-        <p>Fast, responsive support for the everyday issues that slow your team down.</p>
+    </div>
+  </div>
+</section>
+
+<section id="demos">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <div class="section-tag mono">IN THE LAB</div>
+        <h2>Demos we're building — coming soon</h2>
+      </div>
+    </div>
+    <div class="demos">
+      <div class="demo">
+        <span class="soon mono">COMING SOON</span>
+        <h3>Financial Agent</h3>
+        <p>An AI agent that reads statements and reports, reconciles data, and flags what needs a human's attention.</p>
+      </div>
+      <div class="demo">
+        <span class="soon mono">COMING SOON</span>
+        <h3>HR Strategy Agent</h3>
+        <p>An agent that helps small HR teams with policy Q&amp;A, onboarding checklists, and workforce planning.</p>
+      </div>
+      <div class="demo">
+        <span class="soon mono">COMING SOON</span>
+        <h3>Autonomous Robotics</h3>
+        <p>Early experiments applying agentic automation beyond the desktop — where physical and digital workflows meet.</p>
       </div>
     </div>
   </div>
@@ -265,18 +405,23 @@
   <div class="wrap about">
     <div>
       <div class="section-tag mono">ABOUT</div>
-      <h2 style="margin-top:10px; margin-bottom:20px;">A focused IT partner, not a call center</h2>
-      <p>IntelliSharp Solutions LLC works with businesses that need dependable, hands-on IT support without the overhead of an in-house department. We handle the infrastructure, security, and day-to-day technology decisions so you can focus on running your business.</p>
-      <p>Every engagement starts with understanding how your business actually operates — then we build the IT environment around that, not the other way around.</p>
+      <h2 style="margin-top:10px; margin-bottom:20px;">Enterprise-grade automation, sized for your business</h2>
+      <p>IntelliSharp Solutions is led by Muhammad Danish Waseem, a UiPath-certified automation engineer with 12+ years delivering RPA and AI-driven document processing for organizations including the Federal Reserve Bank of San Francisco, HCA Healthcare, and NYC Health + Hospitals.</p>
+      <p>After a career spent automating document-heavy, regulated workflows inside large enterprises, IntelliSharp Solutions exists to bring that same rigor directly to small and mid-sized businesses — without the enterprise price tag or a 9-to-5 corporate layer in between.</p>
+      <div class="credentials">
+        <span class="credential mono">UiPath RPA Developer Certified</span>
+        <span class="credential mono">Microsoft Power Platform (PL-900)</span>
+        <span class="credential mono">12+ Years Enterprise Delivery</span>
+      </div>
     </div>
     <div class="stat-list">
       <div class="stat">
         <div class="n">Direct</div>
-        <div class="l">You work with the people doing the work, not a rotating queue</div>
+        <div class="l">You work with the person doing the work, not a rotating queue</div>
       </div>
       <div class="stat">
-        <div class="n">Proactive</div>
-        <div class="l">Issues get caught during monitoring, before they become downtime</div>
+        <div class="n">Proven</div>
+        <div class="l">Automation experience across healthcare, financial services, and government</div>
       </div>
       <div class="stat">
         <div class="n">Scoped</div>
@@ -286,27 +431,89 @@
   </div>
 </section>
 
+<section id="booking">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <div class="section-tag mono">FREE 30-MIN SESSION</div>
+        <h2>Pick a time that works for you</h2>
+      </div>
+    </div>
+    <div class="booking-shell">
+      <!--
+        TODO (Danish): This is a placeholder. Create a free scheduling account
+        (Calendly or Acuity/as.me — same tool as the example you shared),
+        set up a "Free 30-Minute Session" event type, then either:
+          1) Swap the data-url below for your real Calendly link and delete
+             the placeholder <div id="booking-embed-placeholder"> block, or
+          2) If you use Acuity instead, replace this whole block with
+             Acuity's embed <iframe src="https://app.acuityscheduling.com/schedule.php?owner=...">.
+      -->
+      <div id="booking-embed-placeholder">
+        <strong>Scheduling widget goes here</strong>
+        Once you create a free Calendly (or Acuity) account and set up your "Free 30-Minute Session" event, send me the link and I'll wire it in here — visitors will be able to pick a time and book instantly, no back-and-forth email.
+      </div>
+      <!-- Calendly embed (uncomment and set your real link once ready)
+      <div class="calendly-inline-widget" data-url="https://calendly.com/intellisharpsolutions/free-30-min-session" style="min-width:320px;height:700px;"></div>
+      <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
+      -->
+      <div class="note">
+        <strong>Prefer to just talk first?</strong> Email or call using the details below and we'll find a time together.
+      </div>
+    </div>
+  </div>
+</section>
+
 <section id="contact">
   <div class="wrap contact-grid">
     <div class="contact-card">
-      <h3>Let's talk about your IT</h3>
+      <h3>Let's talk about your business</h3>
       <div class="contact-row">
         <div>
           <div class="l">Email</div>
-          <div>admin@intellisharpsolutions.com</div>
+          <a href="mailto:admin@intellisharpsolutions.com">admin@intellisharpsolutions.com</a>
         </div>
         <div>
           <div class="l">Phone</div>
-          <div>+1 973 851 9246</div>
+          <a href="tel:+19738519246">+1 973 851 9246</a>
         </div>
         <div>
-          <div class="l">Location</div>
-          <div>Grass Valley, California</div>
+          <div class="l">LinkedIn</div>
+          <a href="https://www.linkedin.com/in/danish-waseem" target="_blank" rel="noopener">linkedin.com/in/danish-waseem</a>
+        </div>
+        <div>
+          <div class="l">Based In</div>
+          <div>Washington DC / NYC Metro Area — serving clients nationwide, remote-friendly</div>
         </div>
       </div>
     </div>
     <div class="note">
-      <strong style="color:var(--ink);">Note:</strong> the email, phone, and location fields on this page are placeholders — replace them with IntelliSharp Solutions LLC's real contact details before publishing, since this is also the site Twilio will review for toll-free and business verification.
+      <strong>First step is easy:</strong> book a free 30-minute session above. We'll talk through how your business runs today and where automation can save the most time — no pressure, no jargon.
+    </div>
+  </div>
+</section>
+
+<section id="feedback">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <div class="section-tag mono">TELL US WHAT YOU THINK</div>
+        <h2>Feedback — from anyone, anytime</h2>
+      </div>
+    </div>
+    <div class="feedback-shell">
+      <p style="color:var(--muted); font-size:14px; margin-bottom:24px;">Client, visitor, or just browsing — if you've got thoughts on our services, this site, or an idea for us, we'd genuinely like to hear it.</p>
+      <form id="feedback-form" name="feedback" method="POST" data-netlify="true" netlify-honeypot="bot-field" class="feedback-form">
+        <input type="hidden" name="form-name" value="feedback" />
+        <p class="hidden-field"><label>Don't fill this out if you're human: <input name="bot-field" /></label></p>
+        <div class="form-row">
+          <label>Name<input type="text" name="name" required></label>
+          <label>Email<input type="email" name="email" required></label>
+        </div>
+        <label>Your feedback<textarea name="message" rows="4" required></textarea></label>
+        <button type="submit" class="btn btn-primary">Send feedback</button>
+        <p id="feedback-status" class="feedback-status" style="display:none;"></p>
+      </form>
     </div>
   </div>
 </section>
@@ -315,6 +522,32 @@
   <div>© <span id="year"></span> IntelliSharp Solutions LLC. All rights reserved.</div>
   <div><a href="privacy.html">Privacy Policy</a></div>
 </footer>
+
+<script>
+(function(){
+  var form = document.getElementById('feedback-form');
+  if(!form) return;
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    var status = document.getElementById('feedback-status');
+    var data = new FormData(form);
+    fetch('/', {
+      method: 'POST',
+      headers: {'Content-Type':'application/x-www-form-urlencoded'},
+      body: new URLSearchParams(data).toString()
+    }).then(function(){
+      form.reset();
+      status.style.display = 'block';
+      status.style.color = 'var(--accent)';
+      status.textContent = "Thanks — we'll take a look!";
+    }).catch(function(){
+      status.style.display = 'block';
+      status.style.color = 'crimson';
+      status.textContent = "Something went wrong — please email us directly instead.";
+    });
+  });
+})();
+</script>
 
 <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
 
